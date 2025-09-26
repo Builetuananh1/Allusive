@@ -1,5 +1,5 @@
 --// library script private
-getgenv().namehub = "Builetuananh Hub"
+getgenv().namehub = "Builetuananh"
 local UserInputService = game:GetService('UserInputService')
 local LocalPlayer = game:GetService('Players').LocalPlayer
 local TweenService = game:GetService('TweenService')
