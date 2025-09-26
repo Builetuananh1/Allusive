@@ -501,7 +501,7 @@ function Library:new()
 		UICorner_2.Parent = Fill
 
 		local UIGradient = Instance.new("UIGradient")
-		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(145, 123, 172)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(145, 123, 172))}
+		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(66, 89, 182)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(37, 57, 137))}
 		UIGradient.Rotation = 20
 		UIGradient.Parent = Fill
 
@@ -681,7 +681,7 @@ function Library:new()
 			UICorner_3.Parent = Fill
 
 			local UIGradient = Instance.new("UIGradient")
-			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(145, 123, 172)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(145, 123, 172))}
+			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(66, 89, 182)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(37, 57, 137))}
 			UIGradient.Rotation = 20
 			UIGradient.Parent = Fill
 
