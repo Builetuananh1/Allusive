@@ -707,7 +707,7 @@ function Library:new()
 				Library.Flags[settings.flag] = settings.enabled
 			end
 
-			settings.callback(Library.Flags[self.flag])
+			settings.callback(Library.Flags[settings.flag])
 			
 			Module.update_toggle({
 				state = Library.Flags[settings.flag],
@@ -771,7 +771,7 @@ function Library:new()
 
         function Module:create_slider(settings: any)
 			local drag = false
-			local section = self.section == 'left' and left_section or right_section
+			local section = settings.section == 'left' and left_section or right_section
 
 			local slider = Instance.new("TextButton")
 			slider.Name = "Slider"
@@ -1168,7 +1168,7 @@ function Library:new()
 		end
 
         function Module:create_textbox(settings: any)
-            local section = self.section == 'left' and left_section or right_section
+            local section = settings.section == 'left' and left_section or right_section
 			local Textbox = {}
             local textbox = Instance.new("TextButton")
 			textbox.Name = "TextBox"
@@ -1248,7 +1248,7 @@ function Library:new()
             return Textbox;
         end
 		function Module:create_keybind(settings: any)
-			local section = self.section == 'left' and left_section or right_section
+			local section = settings.section == 'left' and left_section or right_section
 			local keybind = Instance.new("TextButton")
 			keybind.Name = "Keybind"
 			keybind.BackgroundColor3 = Color3.fromRGB(27, 28, 33)
