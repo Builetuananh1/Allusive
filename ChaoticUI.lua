@@ -420,7 +420,7 @@ function Library:new()
 		end
 	end
 
-    function Tab:create_tab(title: string)
+    function Tab:create_tab(title: string, icon: string)
         local tab = Instance.new("TextButton")
 		tab.Name = "Tab"
 		tab.BackgroundColor3 = Color3.fromRGB(27, 28, 33)
@@ -469,7 +469,7 @@ function Library:new()
 		Logo.Position = UDim2.new(0.130999997, 0, 0.5, 0)
 		Logo.Size = UDim2.new(0, 17, 0, 17)
 		Logo.ZIndex = 3
-		Logo.Image = "rbxassetid://17290697757"
+		Logo.Image = icon or "rbxassetid://17290697757"
 		Logo.ImageTransparency = 0.3001
 
 		local Glow = Instance.new("ImageLabel")
