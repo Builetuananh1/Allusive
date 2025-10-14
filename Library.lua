@@ -1849,196 +1849,201 @@ function Library:create_ui()
                 return true;
             end
             
-            function ModuleManager:create_slider(settings: any)
+function ModuleManager:create_slider(settings: any)
+    LayoutOrderModule = LayoutOrderModule + 1
 
-                LayoutOrderModule = LayoutOrderModule + 1
+    local SliderManager = {}
 
-                local SliderManager = {}
+    if self._size == 0 then
+        self._size = 11
+    end
 
-                if self._size == 0 then
-                    self._size = 11
-                end
+    self._size += 27
 
-                self._size += 27
+    if ModuleManager._state then
+        Module.Size = UDim2.fromOffset(241, 93 + self._size)
+    end
 
-                if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
-                end
+    Options.Size = UDim2.fromOffset(241, self._size)
 
-                Options.Size = UDim2.fromOffset(241, self._size)
+    local Slider = Instance.new('TextButton')
+    Slider.FontFace = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    Slider.TextSize = 14
+    Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Slider.Text = ''
+    Slider.AutoButtonColor = false
+    Slider.BackgroundTransparency = 1
+    Slider.Name = 'Slider'
+    Slider.Size = UDim2.new(0, 207, 0, 22)
+    Slider.BorderSizePixel = 0
+    Slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Slider.Parent = Options
+    Slider.LayoutOrder = LayoutOrderModule
 
-                local Slider = Instance.new('TextButton')
-                Slider.FontFace = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-                Slider.TextSize = 14;
-                Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
-                Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Slider.Text = ''
-                Slider.AutoButtonColor = false
-                Slider.BackgroundTransparency = 1
-                Slider.Name = 'Slider'
-                Slider.Size = UDim2.new(0, 207, 0, 22)
-                Slider.BorderSizePixel = 0
-                Slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-                Slider.Parent = Options
-                Slider.LayoutOrder = LayoutOrderModule
-                
-                local TextLabel = Instance.new('TextLabel')
-                if GG.SelectedLanguage == "th" then
-                    TextLabel.FontFace = Font.new("rbxasset://fonts/families/NotoSansThai.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-                    TextLabel.TextSize = 13;
-                else
-                    TextLabel.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-                    TextLabel.TextSize = 11;
-                end;
-                TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-                TextLabel.TextTransparency = 0.20000000298023224
-                TextLabel.Text = settings.title
-                TextLabel.Size = UDim2.new(0, 153, 0, 13)
-                TextLabel.Position = UDim2.new(0, 0, 0.05000000074505806, 0)
-                TextLabel.BackgroundTransparency = 1
-                TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-                TextLabel.BorderSizePixel = 0
-                TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                TextLabel.Parent = Slider
-                
-                local Drag = Instance.new('Frame')
-                Drag.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Drag.AnchorPoint = Vector2.new(0.5, 1)
-                Drag.BackgroundTransparency = 0.8999999761581421
-                Drag.Position = UDim2.new(0.5, 0, 0.949999988079071, 0)
-                Drag.Name = 'Drag'
-                Drag.Size = UDim2.new(0, 207, 0, 4)
-                Drag.BorderSizePixel = 0
-                Drag.BackgroundColor3 = Color3.fromRGB(152, 181, 255)
-                Drag.Parent = Slider
-                
-                local UICorner = Instance.new('UICorner')
-                UICorner.CornerRadius = UDim.new(1, 0)
-                UICorner.Parent = Drag
-                
-                local Fill = Instance.new('Frame')
-                Fill.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Fill.AnchorPoint = Vector2.new(0, 0.5)
-                Fill.BackgroundTransparency = 0.5
-                Fill.Position = UDim2.new(0, 0, 0.5, 0)
-                Fill.Name = 'Fill'
-                Fill.Size = UDim2.new(0, 103, 0, 4)
-                Fill.BorderSizePixel = 0
-                Fill.BackgroundColor3 = Color3.fromRGB(152, 181, 255)
-                Fill.Parent = Drag
-                
-                local UICorner = Instance.new('UICorner')
-                UICorner.CornerRadius = UDim.new(0, 3)
-                UICorner.Parent = Fill
-                
-                local UIGradient = Instance.new('UIGradient')
-                UIGradient.Color = ColorSequence.new{
-                    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-                    ColorSequenceKeypoint.new(1, Color3.fromRGB(79, 79, 79))
-                }
-                UIGradient.Parent = Fill
-                
-                local Circle = Instance.new('Frame')
-                Circle.AnchorPoint = Vector2.new(1, 0.5)
-                Circle.Name = 'Circle'
-                Circle.Position = UDim2.new(1, 0, 0.5, 0)
-                Circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Circle.Size = UDim2.new(0, 6, 0, 6)
-                Circle.BorderSizePixel = 0
-                Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Circle.Parent = Fill
-                
-                local UICorner = Instance.new('UICorner')
-                UICorner.CornerRadius = UDim.new(1, 0)
-                UICorner.Parent = Circle
-                
-                local Value = Instance.new('TextLabel')
-                Value.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-                Value.TextColor3 = Color3.fromRGB(255, 255, 255)
-                Value.TextTransparency = 0.20000000298023224
-                Value.Text = '50'
-                Value.Name = 'Value'
-                Value.Size = UDim2.new(0, 42, 0, 13)
-                Value.AnchorPoint = Vector2.new(1, 0)
-                Value.Position = UDim2.new(1, 0, 0, 0)
-                Value.BackgroundTransparency = 1
-                Value.TextXAlignment = Enum.TextXAlignment.Right
-                Value.BorderSizePixel = 0
-                Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Value.TextSize = 10
-                Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Value.Parent = Slider
+    local TextLabel = Instance.new('TextLabel')
+    if GG.SelectedLanguage == "th" then
+        TextLabel.FontFace = Font.new("rbxasset://fonts/families/NotoSansThai.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        TextLabel.TextSize = 13
+    else
+        TextLabel.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        TextLabel.TextSize = 11
+    end
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextTransparency = 0.2
+    TextLabel.Text = settings.title
+    TextLabel.Size = UDim2.new(0, 153, 0, 13)
+    TextLabel.Position = UDim2.new(0, 0, 0.05, 0)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.BorderSizePixel = 0
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.Parent = Slider
 
-                function SliderManager:set_percentage(percentage: number)
-                    local rounded_number = 0
+    local Drag = Instance.new('Frame')
+    Drag.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Drag.AnchorPoint = Vector2.new(0.5, 1)
+    Drag.BackgroundTransparency = 0.9
+    Drag.Position = UDim2.new(0.5, 0, 0.95, 0)
+    Drag.Name = 'Drag'
+    Drag.Size = UDim2.new(0, 207, 0, 4)
+    Drag.BorderSizePixel = 0
+    Drag.BackgroundColor3 = Color3.fromRGB(152, 181, 255)
+    Drag.Parent = Slider
 
-                    if settings.round_number then
-                        rounded_number = math.floor(percentage)
-                    else
-                        rounded_number = math.floor(percentage * 10) / 10
-                    end
+    local UICorner = Instance.new('UICorner')
+    UICorner.CornerRadius = UDim.new(1, 0)
+    UICorner.Parent = Drag
 
-                    percentage = (percentage - settings.minimum_value) / (settings.maximum_value - settings.minimum_value)
-                    
-                    local slider_size = math.clamp(percentage, 0.02, 1) * Drag.Size.X.Offset
-                    local number_threshold = math.clamp(rounded_number, settings.minimum_value, settings.maximum_value)
-    
-                    Library._config._flags[settings.flag] = number_threshold
-                    Value.Text = number_threshold
-    
-                    TweenService:Create(Fill, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                        Size = UDim2.fromOffset(slider_size, Drag.Size.Y.Offset)
-                    }):Play()
-    
-                    settings.callback(number_threshold)
-                end
+    local Fill = Instance.new('Frame')
+    Fill.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Fill.AnchorPoint = Vector2.new(0, 0.5)
+    Fill.BackgroundTransparency = 0.5
+    Fill.Position = UDim2.new(0, 0, 0.5, 0)
+    Fill.Name = 'Fill'
+    Fill.Size = UDim2.new(0, 103, 0, 4)
+    Fill.BorderSizePixel = 0
+    Fill.BackgroundColor3 = Color3.fromRGB(152, 181, 255)
+    Fill.Parent = Drag
 
-                function SliderManager:update()
-                    local mouse_position = (mouse.X - Drag.AbsolutePosition.X) / Drag.Size.X.Offset
-                    local percentage = settings.minimum_value + (settings.maximum_value - settings.minimum_value) * mouse_position
+    local UICorner = Instance.new('UICorner')
+    UICorner.CornerRadius = UDim.new(0, 3)
+    UICorner.Parent = Fill
 
-                    self:set_percentage(percentage)
-                end
+    local UIGradient = Instance.new('UIGradient')
+    UIGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(79, 79, 79))
+    }
+    UIGradient.Parent = Fill
 
-                function SliderManager:input()
-                    SliderManager:update()
-    
-                    Connections['slider_drag_'..settings.flag] = mouse.Move:Connect(function()
-                        SliderManager:update()
-                    end)
-                    
-                    Connections['slider_input_'..settings.flag] = UserInputService.InputEnded:Connect(function(input: InputObject, process: boolean)
-                        if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
-                            return
-                        end
-    
-                        Connections:disconnect('slider_drag_'..settings.flag)
-                        Connections:disconnect('slider_input_'..settings.flag)
+    local Circle = Instance.new('Frame')
+    Circle.AnchorPoint = Vector2.new(1, 0.5)
+    Circle.Name = 'Circle'
+    Circle.Position = UDim2.new(1, 0, 0.5, 0)
+    Circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Circle.Size = UDim2.new(0, 6, 0, 6)
+    Circle.BorderSizePixel = 0
+    Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Circle.Parent = Fill
 
-                        if not settings.ignoresaved then
-                            Config:save(game.GameId, Library._config);
-                        end;
-                    end)
-                end
+    local UICorner = Instance.new('UICorner')
+    UICorner.CornerRadius = UDim.new(1, 0)
+    UICorner.Parent = Circle
 
+    local Value = Instance.new('TextLabel')
+    Value.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    Value.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Value.TextTransparency = 0.2
+    Value.Text = '50'
+    Value.Name = 'Value'
+    Value.Size = UDim2.new(0, 42, 0, 13)
+    Value.AnchorPoint = Vector2.new(1, 0)
+    Value.Position = UDim2.new(1, 0, 0, 0)
+    Value.BackgroundTransparency = 1
+    Value.TextXAlignment = Enum.TextXAlignment.Right
+    Value.BorderSizePixel = 0
+    Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Value.TextSize = 10
+    Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Value.Parent = Slider
 
-                if Library:flag_type(settings.flag, 'number') then
-                    if not settings.ignoresaved then
-                        SliderManager:set_percentage(Library._config._flags[settings.flag]);
-                    else
-                        SliderManager:set_percentage(settings.value);
-                    end;
-                else
-                    SliderManager:set_percentage(settings.value);
-                end;
-    
-                Slider.MouseButton1Down:Connect(function()
-                    SliderManager:input()
-                end)
+    function SliderManager:set_percentage(percentage: number)
+        percentage = math.clamp(percentage, settings.minimum_value, settings.maximum_value)
 
-                return SliderManager
+        local rounded_number
+        if settings.round_number == true then
+            rounded_number = math.floor(percentage + 0.5)
+        elseif type(settings.round_number) == "number" then
+            local factor = 10 ^ settings.round_number
+            rounded_number = math.floor(percentage * factor + 0.5) / factor
+        else
+            rounded_number = percentage
+        end
+
+        local slider_percent = (rounded_number - settings.minimum_value) / (settings.maximum_value - settings.minimum_value)
+        local slider_size = math.clamp(slider_percent, 0.02, 1) * Drag.Size.X.Offset
+        local number_threshold = math.clamp(rounded_number, settings.minimum_value, settings.maximum_value)
+
+        Library._config._flags[settings.flag] = number_threshold
+
+        if type(settings.round_number) == "number" then
+            Value.Text = string.format("%." .. tostring(settings.round_number) .. "f", number_threshold)
+        else
+            Value.Text = tostring(number_threshold)
+        end
+
+        TweenService:Create(Fill, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+            Size = UDim2.fromOffset(slider_size, Drag.Size.Y.Offset)
+        }):Play()
+
+        settings.callback(number_threshold)
+    end
+
+    function SliderManager:update()
+        local mouse_position = (mouse.X - Drag.AbsolutePosition.X) / Drag.Size.X.Offset
+        local percentage = settings.minimum_value + (settings.maximum_value - settings.minimum_value) * mouse_position
+        self:set_percentage(percentage)
+    end
+
+    function SliderManager:input()
+        SliderManager:update()
+
+        Connections['slider_drag_' .. settings.flag] = mouse.Move:Connect(function()
+            SliderManager:update()
+        end)
+
+        Connections['slider_input_' .. settings.flag] = UserInputService.InputEnded:Connect(function(input: InputObject, process: boolean)
+            if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
+                return
             end
+
+            Connections:disconnect('slider_drag_' .. settings.flag)
+            Connections:disconnect('slider_input_' .. settings.flag)
+
+            if not settings.ignoresaved then
+                Config:save(game.GameId, Library._config)
+            end
+        end)
+    end
+
+    if Library:flag_type(settings.flag, 'number') then
+        if not settings.ignoresaved then
+            SliderManager:set_percentage(Library._config._flags[settings.flag])
+        else
+            SliderManager:set_percentage(settings.value)
+        end
+    else
+        SliderManager:set_percentage(settings.value)
+    end
+
+    Slider.MouseButton1Down:Connect(function()
+        SliderManager:input()
+    end)
+
+    return SliderManager
+end
 
             function ModuleManager:create_dropdown(settings: any)
 
