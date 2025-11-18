@@ -1,5 +1,5 @@
 --// library script private
-getgenv().namehub = "Builetuananh Hub"
+getgenv().namehub = "March Hub"
 local UserInputService = game:GetService('UserInputService')
 local LocalPlayer = game:GetService('Players').LocalPlayer
 local TweenService = game:GetService('TweenService')
@@ -21,8 +21,8 @@ local Library = {
 }
 
 
-if not isfolder("Builetuananh") then
-    makefolder("Builetuananh")
+if not isfolder("cac hub") then
+    makefolder("cac hub")
 end
 
 function Library:disconnect()
@@ -38,7 +38,7 @@ end
 
 function Library:clear()
 	for _, object in CoreGui:GetChildren() do
-		if object.Name ~= "Builetuananh" then
+		if object.Name ~= "cac" then
 			continue
 		end
 	
@@ -56,13 +56,13 @@ function Library:save_flags()
     if not Library.exist() then return end
 
     local flags = HttpService:JSONEncode(Library.Flags)
-    writefile(`Builetuananh/{game.GameId}.lua`, flags)
+    writefile(`cac hub/{game.GameId}.lua`, flags)
 end
 
 function Library:load_flags()
-    if not isfile(`Builetuananh/{game.GameId}.lua`) then Library.save_flags() return end
+    if not isfile(`cac hub/{game.GameId}.lua`) then Library.save_flags() return end
 
-    local flags = readfile(`Builetuananh/{game.GameId}.lua`)
+    local flags = readfile(`cac hub/{game.GameId}.lua`)
     if not flags then Library.save_flags() return end
 
     Library.Flags = HttpService:JSONDecode(flags)
@@ -139,7 +139,7 @@ end
 
 function Library:new()
 	local container = Instance.new("ScreenGui")
-	container.Name = "Builetuananh"
+	container.Name = "cac"
     container.Parent = CoreGui
 
     Library.core = container
@@ -205,7 +205,7 @@ function Library:new()
 	TextLabel.Size = UDim2.new(0, 75, 0, 16)
 	TextLabel.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
 	TextLabel.Text = getgenv().namehub
-	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextColor3 = Color3.fromRGB(145, 123, 172)
 	TextLabel.TextScaled = true
 	TextLabel.TextSize = 14.000
 	TextLabel.TextWrapped = true
@@ -292,7 +292,7 @@ function Library:new()
 	State.Size = UDim2.new(0, 64, 0, 15)
 	State.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
 	State.Text = "Open"
-	State.TextColor3 = Color3.fromRGB(255, 255, 255)
+	State.TextColor3 = Color3.fromRGB(145, 123, 172)
 	State.TextScaled = true
 	State.TextSize = 14.000
 	State.TextWrapped = true
@@ -501,7 +501,7 @@ function Library:new()
 		UICorner_2.Parent = Fill
 
 		local UIGradient = Instance.new("UIGradient")
-		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(66, 89, 182)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(37, 57, 137))}
+		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(145, 123, 172)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(145, 123, 172))}
 		UIGradient.Rotation = 20
 		UIGradient.Parent = Fill
 
@@ -582,7 +582,7 @@ function Library:new()
 			title.Size = UDim2.new(0, 201, 0, 15)
 			title.ZIndex = 2
 			title.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
-			title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			title.TextColor3 = Color3.fromRGB(145, 123, 172)
 			title.TextScaled = true
 			title.TextSize = 14.000
 			title.TextWrapped = true
@@ -681,7 +681,7 @@ function Library:new()
 			UICorner_3.Parent = Fill
 
 			local UIGradient = Instance.new("UIGradient")
-			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(66, 89, 182)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(37, 57, 137))}
+			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(145, 123, 172)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(145, 123, 172))}
 			UIGradient.Rotation = 20
 			UIGradient.Parent = Fill
 
